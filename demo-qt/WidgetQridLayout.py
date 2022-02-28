@@ -8,6 +8,12 @@ class WidgetGridLayout(QWidget):
         self.makeButton()
         self.specialButton()
         self.setLayout(self.grid_layout)
+        self.setStyleSheet("""
+        QPushButton {
+                border: 1px solid #cd2127
+                border-radius :5px
+            }
+        """)
 
     def makeButton(self):
         for x in range(3):
