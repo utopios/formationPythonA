@@ -10,6 +10,7 @@ import re
 import shutil
 import sys
 import time
+from timer import Timer
 
 
 def print_hi(name):
@@ -54,11 +55,14 @@ def read_mail_from_imap_server(email, password):
 
 def use_timer_module():
     #print(time.perf_counter())
-    start = time.perf_counter()
+    #start = time.perf_counter()
     # le temps pour afficher le 'hello world'
+    t = Timer()
+    t.start()
     print("hello world")
-    end = time.perf_counter()
-    print(f"le temps de l'action est {end-start:0.10f} secondes")
+    t.stop()
+    #end = time.perf_counter()
+    #print(f"le temps de l'action est {end-start:0.10f} secondes")
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
