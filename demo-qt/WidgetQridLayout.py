@@ -13,7 +13,7 @@ class WidgetGridLayout(QWidget):
         for x in range(3):
             for y in range(3):
                 b = QPushButton(str(str(3*x + y)))
-                b.clicked.connect(lambda: self.clickbutton(b))
+                b.clicked.connect(self.clickbutton)
                 self.grid_layout.addWidget(b, x, y)
 
     def specialButton(self):
@@ -22,6 +22,6 @@ class WidgetGridLayout(QWidget):
         self.label = QLabel()
         self.grid_layout.addWidget(self.label, 4, 0, 1, 3)
 
-    def clickbutton(self, button):
-        self.label.setText(button.text())
+    def clickbutton(self):
+        self.label.setText(self.sender().text())
 
