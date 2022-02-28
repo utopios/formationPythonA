@@ -9,6 +9,7 @@ import os
 import re
 import shutil
 import sys
+import time
 
 
 def print_hi(name):
@@ -51,8 +52,16 @@ def read_mail_from_imap_server(email, password):
     mail_box.select('inbox')
     status, data = mail_box.search(None, 'ALL')
 
+def use_timer_module():
+    #print(time.perf_counter())
+    start = time.perf_counter()
+    # le temps pour afficher le 'hello world'
+    print("hello world")
+    end = time.perf_counter()
+    print(f"le temps de l'action est {end-start:0.10f} secondes")
+
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    response = use_http_client_web("http://google.com").getresponse()
+    use_timer_module()
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/

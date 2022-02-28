@@ -1,0 +1,6 @@
+Exercice 1
+On souhaite créer une classe Timer qui permet d'avoir le temps d'execution d'une action donnée.
+la classe Timer peut avoir:
+    une méthode start qui démarre le tic
+    une méthode stop qui arrete le tic
+    une méthode pour récupérer le temps d'execution.
