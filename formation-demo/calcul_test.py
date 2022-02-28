@@ -15,15 +15,16 @@ class MyTestCase(unittest.TestCase):
         # A => Assert
         self.assertIsNotNone(result, "after time start the result should not be none")
 
-    def test_start_timer(self):
+    def test_stop_timer(self):
         # pattern AAA
         # A => Arange
         t = Timer()
         # A => Act
         t.start()
+        t.stop()
         result = t.start_time
         # A => Assert
-        self.assertIsNotNone(result, "after time start the result should not be none")
+        self.assertIsNone(result, "after time stoped the result should be none")
 
 
 if __name__ == '__main__':
