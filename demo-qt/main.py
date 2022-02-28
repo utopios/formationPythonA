@@ -9,6 +9,9 @@ def start_app():
     app = QApplication(sys.argv)
     w1 = FirstWindow()
     w1.show()
+    w1.setWindowTitle('First window')
+    #button = QPushButton("first button")
+    #w1.setCentralWidget(button)
     app.exec()
 
 
