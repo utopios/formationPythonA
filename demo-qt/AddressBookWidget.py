@@ -16,14 +16,14 @@ class AddressBookWidget(QWidget):
     def firstrow(self):
         label = QLabel('Name : ')
         self.grid_layout.addWidget(label, 0, 0)
-        edit_text_name = QTextEdit()
-        self.grid_layout.addWidget(edit_text_name, 0, 1)
+        self.edit_text_name = QTextEdit()
+        self.grid_layout.addWidget(self.edit_text_name, 0, 1)
 
     def secondrow(self):
         label = QLabel('Address : ')
         self.grid_layout.addWidget(label, 1, 0)
-        edit_text_address = QTextEdit()
-        self.grid_layout.addWidget(edit_text_address, 1, 1)
+        self.edit_text_address = QTextEdit()
+        self.grid_layout.addWidget(self.edit_text_address, 1, 1)
         self.verticalbuttons()
 
     def thirdrow(self):
@@ -42,6 +42,13 @@ class AddressBookWidget(QWidget):
         button_add = QPushButton('Add')
         button_add.setEnabled(False)
         layout_vertical.addWidget(button_add)
-        button_submit = QPushButton('Submit')
-        layout_vertical.addWidget(button_submit)
+        self.button_submit = QPushButton('Submit')
+        layout_vertical.addWidget(self.button_submit)
+        self.button_submit.clicked.connect(self.addaddress)
         self.grid_layout.addLayout(layout_vertical, 1, 2)
+
+    def addaddress(self):
+        files = open('data/data.txt', 'a')
+        files.write(f"Name : {self.edit_text_name.toPlainText()}, address : {self.edit_text_address.toPlainText()}")
+        files.close()
+
