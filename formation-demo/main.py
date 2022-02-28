@@ -10,7 +10,7 @@ import re
 import shutil
 import sys
 import time
-from timer import Timer
+from timer import Timer, decorator_timer
 import logging
 
 
@@ -54,14 +54,16 @@ def read_mail_from_imap_server(email, password):
     mail_box.select('inbox')
     status, data = mail_box.search(None, 'ALL')
 
+
+@decorator_timer
 def use_timer_module():
     #print(time.perf_counter())
     #start = time.perf_counter()
     # le temps pour afficher le 'hello world'
-    t = Timer(logger=logging.error)
-    t.start()
+    #t = Timer(logger=logging.error)
+    #t.start()
     print("hello world")
-    t.stop()
+    #t.stop()
     #end = time.perf_counter()
     #print(f"le temps de l'action est {end-start:0.10f} secondes")
 

@@ -1,3 +1,4 @@
+import functools
 import time
 
 
@@ -15,3 +16,14 @@ class Timer:
         self._start_time = None
         #print(f"le temps d'execution est de {interval_time:0.6f} secondes")
         self.logger(self.message.format(interval_time))
+
+
+def decorator_timer(func):
+    @functools.wraps(func)
+    def wrapper(*args, **kargs):
+        start = time.perf_counter()
+        value = func(*args, **kargs)
+        interval_time = time.perf_counter() - start
+        print(f"le temps d'execution est de {interval_time:0.6f} secondes")
+        return value
+    return wrapper
