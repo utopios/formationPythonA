@@ -4,6 +4,7 @@
 # Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
 import glob
 import http.client
+import imaplib
 import os
 import re
 import shutil
@@ -43,6 +44,12 @@ def use_module_regex_search(regex, chaine):
 def use_http_client_web(host):
     connection = http.client.HTTPConnection(host,80)
     return connection
+
+def read_mail_from_imap_server(email, password):
+    mail_box = imaplib.IMAP4("smtp.utopios.net")
+    mail_box.login(email,password)
+    mail_box.select('inbox')
+    status, data = mail_box.search(None, 'ALL')
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
