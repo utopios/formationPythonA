@@ -11,6 +11,7 @@ import shutil
 import sys
 import time
 from timer import Timer
+import logging
 
 
 def print_hi(name):
@@ -57,7 +58,7 @@ def use_timer_module():
     #print(time.perf_counter())
     #start = time.perf_counter()
     # le temps pour afficher le 'hello world'
-    t = Timer()
+    t = Timer(logger=logging.error)
     t.start()
     print("hello world")
     t.stop()
