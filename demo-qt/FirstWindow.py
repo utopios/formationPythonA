@@ -4,6 +4,7 @@ from PyQt5.QtWidgets import *
 from AddressBookWidget import AddressBookWidget
 from FirstWidget import FirstWidget
 from SecondWidget import SecondWidget
+from WidgetComboBox import WidgetComboBox
 from WidgetQridLayout import WidgetGridLayout
 
 
@@ -17,11 +18,13 @@ class FirstWindow(QMainWindow):
         # dateEdit = QDateEdit(self)
         #self.setCentralWidget
 
-        first_widget = FirstWidget(self)
+        #first_widget = FirstWidget(self)
         #second_widget = SecondWidget(self)
         #grid_layout_widget = WidgetGridLayout(self)
         #address_widget = AddressBookWidget(self)
-        self.setCentralWidget(first_widget)
+
+        combo_box = WidgetComboBox(self)
+        self.setCentralWidget(combo_box)
 
 
 
