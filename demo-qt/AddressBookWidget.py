@@ -1,4 +1,5 @@
 from PyQt5.QtWidgets import QWidget, QGridLayout, QLabel, QTextEdit, QVBoxLayout, QPushButton, QHBoxLayout
+from PyQt5.uic.properties import QtGui
 
 
 class AddressBookWidget(QWidget):
@@ -51,4 +52,11 @@ class AddressBookWidget(QWidget):
         files = open('data/data.txt', 'a')
         files.write(f"Name : {self.edit_text_name.toPlainText()}, address : {self.edit_text_address.toPlainText()}")
         files.close()
+
+    def keyPressEvent(self, a0) -> None:
+        self.edit_text_name.setText(a0.key())
+
+    def mousePressEvent(self, a0) -> None:
+        self.edit_text_address.setText(str(a0.globalPos().x()))
+
 
