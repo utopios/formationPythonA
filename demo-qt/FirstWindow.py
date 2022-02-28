@@ -1,6 +1,7 @@
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import *
 
+from AddressBookWidget import AddressBookWidget
 from FirstWidget import FirstWidget
 from SecondWidget import SecondWidget
 from WidgetQridLayout import WidgetGridLayout
@@ -18,8 +19,9 @@ class FirstWindow(QMainWindow):
 
         #first_widget = FirstWidget(self)
         #second_widget = SecondWidget(self)
-        grid_layout_widget = WidgetGridLayout(self)
-        self.setCentralWidget(grid_layout_widget)
+        #grid_layout_widget = WidgetGridLayout(self)
+        address_widget = AddressBookWidget(self)
+        self.setCentralWidget(address_widget)
 
 
 
