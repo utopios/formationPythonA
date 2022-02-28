@@ -3,6 +3,7 @@ from PyQt5.QtWidgets import *
 
 from FirstWidget import FirstWidget
 from SecondWidget import SecondWidget
+from WidgetQridLayout import WidgetGridLayout
 
 
 class FirstWindow(QMainWindow):
@@ -16,8 +17,9 @@ class FirstWindow(QMainWindow):
         #self.setCentralWidget
 
         #first_widget = FirstWidget(self)
-        second_widget = SecondWidget(self)
-        self.setCentralWidget(second_widget)
+        #second_widget = SecondWidget(self)
+        grid_layout_widget = WidgetGridLayout(self)
+        self.setCentralWidget(grid_layout_widget)
 
 
 
