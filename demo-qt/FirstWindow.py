@@ -2,6 +2,7 @@ from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import *
 
 from FirstWidget import FirstWidget
+from SecondWidget import SecondWidget
 
 
 class FirstWindow(QMainWindow):
@@ -14,8 +15,9 @@ class FirstWindow(QMainWindow):
         # dateEdit = QDateEdit(self)
         #self.setCentralWidget
 
-        first_widget = FirstWidget(self)
-        self.setCentralWidget(first_widget)
+        #first_widget = FirstWidget(self)
+        second_widget = SecondWidget(self)
+        self.setCentralWidget(second_widget)
 
 
 
