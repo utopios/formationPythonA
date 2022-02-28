@@ -5,6 +5,9 @@ class AddressBookWidget(QWidget):
     def __init__(self, parent):
         super().__init__(parent)
         self.grid_layout = QGridLayout()
+        self.grid_layout.setRowStretch(0, 1)
+        self.grid_layout.setRowStretch(1, 3)
+        self.grid_layout.setRowStretch(2, 1)
         self.setLayout(self.grid_layout)
         self.firstrow()
         self.secondrow()
