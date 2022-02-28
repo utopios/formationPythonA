@@ -20,11 +20,11 @@ class FirstWindow(QMainWindow):
 
         #first_widget = FirstWidget(self)
         #second_widget = SecondWidget(self)
-        #grid_layout_widget = WidgetGridLayout(self)
+        grid_layout_widget = WidgetGridLayout(self)
         #address_widget = AddressBookWidget(self)
 
-        combo_box = WidgetComboBox(self)
-        self.setCentralWidget(combo_box)
+        #combo_box = WidgetComboBox(self)
+        self.setCentralWidget(grid_layout_widget)
 
 
 
