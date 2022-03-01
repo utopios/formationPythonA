@@ -1,9 +1,14 @@
+from PyQt5.QtCore import pyqtSignal
 from PyQt5.QtWidgets import QWidget, QVBoxLayout, QListView, QLineEdit, QPushButton, QHBoxLayout
 
+from MessageDialog import MessageDialog
 from ToDoModel import ToDoModel
 
 
 class ToDoWidget(QWidget):
+
+    successAdd = pyqtSignal()
+
     def __init__(self, parent):
         super().__init__(parent)
         self.v_layout_box = QVBoxLayout()
@@ -41,6 +46,7 @@ class ToDoWidget(QWidget):
             todo = (False, content)
             self.todo_model.todos.append(todo)
             self.todo_model.layoutChanged.emit()
+            self.successAdd.emit()
             self.edit_todo_text.setText("")
 
     def delete(self):
