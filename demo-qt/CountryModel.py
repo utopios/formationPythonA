@@ -1,4 +1,4 @@
-from PyQt5.QtCore import QAbstractListModel
+from PyQt5.QtCore import QAbstractListModel, Qt
 
 
 class CountryModel(QAbstractListModel):
@@ -8,7 +8,9 @@ class CountryModel(QAbstractListModel):
 
     # la méthode qui permet d'afficher chaque element
     def data(self, index, role):
-        return self.countries[index.row()]
+        if role == Qt.DisplayRole:
+            text = self.countries[index.row()]
+            return text
 
     #Methode utilisée par la listview pour avoir le nombre d'elements à afficher
     def rowCount(self, index):
