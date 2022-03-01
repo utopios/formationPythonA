@@ -35,6 +35,9 @@ unsigned long * fib(unsigned n)
     return fib_arr;
 }
 
+void freeme(unsigned long * ptr) {
+    free(ptr);e
+}
 
 int main() {
     printf("Hello, World!\n");

@@ -26,10 +26,13 @@ def use_c_module():
 
     #Avec un pointeur
     c_module.fib.restype = ctypes.POINTER(ctypes.c_ulong)
-    a = 2
+    a = 10
     res = c_module.fib(ctypes.c_uint(a))
-    for r in res:
-        print(r)
+    for i in range(10):
+        print(res[i])
+
+    c_module.freeme(res)
+    #ctypes.cdll.LoadLibrary('msvcrt').free(res)
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
