@@ -1,0 +1,9 @@
+En utilisant le widget address, on souhaite récupérer les valeurs name et address pour les ajouter dans un fichier txt.
+
+Exercice 2
+On souhaite créer une application pour afficher une liste todos "comme image todo.png"
+Chaque todo est un element (etat:boolean, text:str)
+Le but est de :
+    - Ajouter un todo
+    - modifier l'état d'un todo
+    - supprimer un todo

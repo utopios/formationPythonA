@@ -1,1 +1,0 @@
-En utilisant le widget address, on souhaite récupérer les valeurs name et address pour les ajouter dans un fichier txt.
