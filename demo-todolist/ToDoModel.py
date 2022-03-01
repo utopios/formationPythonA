@@ -11,5 +11,5 @@ class ToDoModel(QAbstractListModel):
 
     def data(self, index, role):
         if role == Qt.DisplayRole:
-            _, content = self.todos[index.row()]
-            return content
+            status, content = self.todos[index.row()]
+            return str(status) + content

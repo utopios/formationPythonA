@@ -31,6 +31,8 @@ class ToDoWidget(QWidget):
 
     def connectslot(self):
         self.add_button.clicked.connect(self.add)
+        self.delete_button.clicked.connect(self.delete)
+        self.complete_button.clicked.connect(self.complete)
 
 
     def add(self):
@@ -40,4 +42,24 @@ class ToDoWidget(QWidget):
             self.todo_model.todos.append(todo)
             self.todo_model.layoutChanged.emit()
             self.edit_todo_text.setText("")
+
+    def delete(self):
+        indexes = self.list_view.selectedIndexes()
+        if indexes:
+            index = indexes[0]
+            del self.todo_model.todos[index.row()]
+            self.todo_model.layoutChanged.emit()
+            self.list_view.clearSelection()
+
+    def complete(self):
+        indexes = self.list_view.selectedIndexes()
+        if indexes:
+            index = indexes[0]
+            key = index.row()
+            status, content = self.todo_model.todos[key]
+            self.todo_model.todos[key] = (True, content)
+            #self.todo_model.layoutChanged.emit()
+            self.todo_model.dataChanged.emit(index, index)
+            self.list_view.clearSelection()
+
 
