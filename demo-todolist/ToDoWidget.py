@@ -45,12 +45,13 @@ class ToDoWidget(QWidget):
         content = self.edit_todo_text.text()
         if content:
             todo = (False, content)
-            self.todo_model.todos.append(todo)
-            self.todo_model.layoutChanged.emit()
             if self.controller_db:
                 result = self.controller_db.add(todo)
-            self.successAdd.emit()
-            self.edit_todo_text.setText("")
+                if result:
+                    self.todo_model.todos.append(todo)
+                    self.todo_model.layoutChanged.emit()
+                    self.successAdd.emit()
+                    self.edit_todo_text.setText("")
 
     def delete(self):
         indexes = self.list_view.selectedIndexes()
