@@ -9,7 +9,7 @@ class ToDoWidget(QWidget):
 
     successAdd = pyqtSignal()
 
-    def __init__(self, parent, controller_db=None):
+    def __init__(self, parent=None, controller_db=None):
         super().__init__(parent)
         self.v_layout_box = QVBoxLayout()
         self.list_view = QListView()
