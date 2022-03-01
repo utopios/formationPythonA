@@ -1,0 +1,3 @@
+/Users/ihab/Desktop/ForamtionPython/projetc/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/ihab/Desktop/ForamtionPython/projetc/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/ihab/Desktop/ForamtionPython/projetc/cmake-build-debug/CMakeFiles/projetc.dir
