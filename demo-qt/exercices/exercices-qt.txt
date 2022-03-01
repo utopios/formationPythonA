@@ -7,3 +7,5 @@ Le but est de :
     - Ajouter un todo
     - modifier l'état d'un todo
     - supprimer un todo
+
+- Appeler une librairie en c qui permet d'ecrire les tods dans un fichier.
