@@ -1,3 +1,4 @@
+from PyQt5 import QtGui
 from PyQt5.QtCore import QAbstractListModel, Qt
 
 
@@ -11,5 +12,10 @@ class ToDoModel(QAbstractListModel):
 
     def data(self, index, role):
         if role == Qt.DisplayRole:
-            status, content = self.todos[index.row()]
-            return str(status) + content
+            _, content = self.todos[index.row()]
+            return content
+        if role == Qt.DecorationRole:
+            status, _ = self.todos[index.row()]
+            if status:
+                return QtGui.QImage('done.png')
+
