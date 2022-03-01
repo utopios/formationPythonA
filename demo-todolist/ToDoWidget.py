@@ -9,7 +9,7 @@ class ToDoWidget(QWidget):
 
     successAdd = pyqtSignal()
 
-    def __init__(self, parent):
+    def __init__(self, parent, controller_db=None):
         super().__init__(parent)
         self.v_layout_box = QVBoxLayout()
         self.list_view = QListView()
@@ -22,6 +22,7 @@ class ToDoWidget(QWidget):
         self.list_view.setModel(self.todo_model)
         self.createwidget()
         self.connectslot()
+        self.controller_db = controller_db
 
 
     def createwidget(self):
@@ -46,6 +47,8 @@ class ToDoWidget(QWidget):
             todo = (False, content)
             self.todo_model.todos.append(todo)
             self.todo_model.layoutChanged.emit()
+            if self.controller_db:
+                result = self.controller_db.add(todo)
             self.successAdd.emit()
             self.edit_todo_text.setText("")
 
