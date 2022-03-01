@@ -1,6 +1,5 @@
 from PyQt5.QtGui import QStandardItemModel, QStandardItem
 from PyQt5.QtWidgets import QWidget, QGridLayout, QLabel, QTextEdit, QVBoxLayout, QPushButton, QHBoxLayout, QListView
-from PyQt5.uic.properties import QtGui
 
 from CountryModel import CountryModel
 
@@ -35,11 +34,10 @@ class AddressBookWidget(QWidget):
         label = QLabel('Country : ')
         self.grid_layout.addWidget(label, 2, 0)
         self.list_view = QListView()
-
         #La création du model à envoyer dans le widget list
         #model = QStandardItemModel(self.list_view)
         countries = ["en", "fr", "be"]
-        model = CountryModel(countries)
+        self.model = CountryModel(countries)
 
         # for c in countries:
         #     item = QStandardItem(c)
@@ -47,9 +45,15 @@ class AddressBookWidget(QWidget):
         #     model.appendRow(item)
 
         #model.itemChanged.connect(self.countrychanged)
-        self.list_view.setModel(model)
-
+        self.list_view.setModel(self.model)
         self.grid_layout.addWidget(self.list_view, 2, 1)
+        vertical_layout = QVBoxLayout()
+        self.edit_text_new_country = QTextEdit()
+        vertical_layout.addWidget(self.edit_text_new_country)
+        self.button_add_country = QPushButton('ajouter')
+        self.button_add_country.clicked.connect(self.addcountry)
+        vertical_layout.addWidget(self.button_add_country)
+        self.grid_layout.addLayout(vertical_layout, 2, 2)
 
     def thirdrow(self):
         h_layout = QHBoxLayout()
@@ -89,5 +93,12 @@ class AddressBookWidget(QWidget):
 
     def mousePressEvent(self, a0) -> None:
         self.edit_text_address.setText(str(a0.globalPos().x()))
+
+    def addcountry(self):
+        text = self.edit_text_new_country.toPlainText()
+        if text:
+            self.model.countries.append(text)
+            self.model.layoutChanged.emit()
+
 
 
