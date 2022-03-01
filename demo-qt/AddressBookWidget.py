@@ -1,4 +1,5 @@
-from PyQt5.QtWidgets import QWidget, QGridLayout, QLabel, QTextEdit, QVBoxLayout, QPushButton, QHBoxLayout
+from PyQt5.QtGui import QStandardItemModel, QStandardItem
+from PyQt5.QtWidgets import QWidget, QGridLayout, QLabel, QTextEdit, QVBoxLayout, QPushButton, QHBoxLayout, QListView
 from PyQt5.uic.properties import QtGui
 
 
@@ -12,6 +13,7 @@ class AddressBookWidget(QWidget):
         self.setLayout(self.grid_layout)
         self.firstrow()
         self.secondrow()
+        self.countriesrow()
         self.thirdrow()
 
     def firstrow(self):
@@ -27,6 +29,23 @@ class AddressBookWidget(QWidget):
         self.grid_layout.addWidget(self.edit_text_address, 1, 1)
         self.verticalbuttons()
 
+    def countriesrow(self):
+        label = QLabel('Country : ')
+        self.grid_layout.addWidget(label, 2, 0)
+        list_view = QListView()
+
+        #La création du model à envoyer dans le widget list
+        model = QStandardItemModel(list_view)
+
+        countries = ["en", "fr", "be"]
+
+        for c in countries:
+            item = QStandardItem(c)
+            model.appendRow(item)
+
+        list_view.setModel(model)
+        self.grid_layout.addWidget(list_view, 2, 1)
+
     def thirdrow(self):
         h_layout = QHBoxLayout()
         button_previous = QPushButton('Previous')
@@ -35,7 +54,7 @@ class AddressBookWidget(QWidget):
         button_next = QPushButton('Next')
         button_next.setEnabled(False)
         h_layout.addWidget(button_next)
-        self.grid_layout.addLayout(h_layout, 2, 1)
+        self.grid_layout.addLayout(h_layout, 3, 1)
 
 
     def verticalbuttons(self):
@@ -47,6 +66,9 @@ class AddressBookWidget(QWidget):
         layout_vertical.addWidget(self.button_submit)
         self.button_submit.clicked.connect(self.addaddress)
         self.grid_layout.addLayout(layout_vertical, 1, 2)
+
+
+
 
     def addaddress(self):
         files = open('data/data.txt', 'a')

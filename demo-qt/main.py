@@ -4,7 +4,6 @@ from PyQt5.QtWidgets import *
 
 from FirstWindow import FirstWindow
 
-
 def start_app():
     app = QApplication(sys.argv)
     w1 = FirstWindow()
@@ -13,6 +12,7 @@ def start_app():
     #button = QPushButton("first button")
     #w1.setCentralWidget(button)
     app.exec()
+
 
 
 # Press the green button in the gutter to run the script.
