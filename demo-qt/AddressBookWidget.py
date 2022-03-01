@@ -32,19 +32,22 @@ class AddressBookWidget(QWidget):
     def countriesrow(self):
         label = QLabel('Country : ')
         self.grid_layout.addWidget(label, 2, 0)
-        list_view = QListView()
+        self.list_view = QListView()
 
         #La création du model à envoyer dans le widget list
-        model = QStandardItemModel(list_view)
+        model = QStandardItemModel(self.list_view)
 
         countries = ["en", "fr", "be"]
 
         for c in countries:
             item = QStandardItem(c)
+            item.setCheckable(True)
             model.appendRow(item)
 
-        list_view.setModel(model)
-        self.grid_layout.addWidget(list_view, 2, 1)
+        model.itemChanged.connect(self.countrychanged)
+        self.list_view.setModel(model)
+
+        self.grid_layout.addWidget(self.list_view, 2, 1)
 
     def thirdrow(self):
         h_layout = QHBoxLayout()
@@ -74,6 +77,10 @@ class AddressBookWidget(QWidget):
         files = open('data/data.txt', 'a')
         files.write(f"Name : {self.edit_text_name.toPlainText()}, address : {self.edit_text_address.toPlainText()}")
         files.close()
+
+    def countrychanged(self, item):
+
+        self.edit_text_name.setText(item)
 
     def keyPressEvent(self, a0) -> None:
         self.edit_text_name.setText(a0.key())
