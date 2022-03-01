@@ -2,6 +2,8 @@ from PyQt5.QtGui import QStandardItemModel, QStandardItem
 from PyQt5.QtWidgets import QWidget, QGridLayout, QLabel, QTextEdit, QVBoxLayout, QPushButton, QHBoxLayout, QListView
 from PyQt5.uic.properties import QtGui
 
+from CountryModel import CountryModel
+
 
 class AddressBookWidget(QWidget):
     def __init__(self, parent):
@@ -35,16 +37,16 @@ class AddressBookWidget(QWidget):
         self.list_view = QListView()
 
         #La création du model à envoyer dans le widget list
-        model = QStandardItemModel(self.list_view)
-
+        #model = QStandardItemModel(self.list_view)
         countries = ["en", "fr", "be"]
+        model = CountryModel(countries)
 
-        for c in countries:
-            item = QStandardItem(c)
-            item.setCheckable(True)
-            model.appendRow(item)
+        # for c in countries:
+        #     item = QStandardItem(c)
+        #     item.setCheckable(True)
+        #     model.appendRow(item)
 
-        model.itemChanged.connect(self.countrychanged)
+        #model.itemChanged.connect(self.countrychanged)
         self.list_view.setModel(model)
 
         self.grid_layout.addWidget(self.list_view, 2, 1)
