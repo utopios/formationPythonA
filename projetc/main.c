@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 int int_add(int a, int b) {
     return a + b;
@@ -17,6 +18,23 @@ void add_int_vecteur(int *a, int *b, int *c, int taille) {
         c[i] = a[i] + b[i];
     }
 }
+unsigned long * fib(unsigned n)
+{
+    unsigned long * fib_arr = (unsigned long *) malloc(n * sizeof(unsigned long));
+
+    if (n >= 1)
+        fib_arr[0] = 0;
+    if (n >= 2)
+        fib_arr[1] = 1;
+
+    for (unsigned i = 2; i < n; ++i)
+    {
+        fib_arr[i] = fib_arr[i-2] + fib_arr[i-1];
+    }
+
+    return fib_arr;
+}
+
 
 int main() {
     printf("Hello, World!\n");

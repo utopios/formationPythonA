@@ -16,15 +16,20 @@ def use_c_module():
     # print(result2)
     # c_module.float_add_ref(ctypes.byref(a), ctypes.byref(b), ctypes.byref(c))
     # print(c.value)
-    n = 3
-    v1 = (ctypes.c_int * n) (1, 3, 5)
-    v2 = (ctypes.c_int * n) (3, 5, 6)
-    res = (ctypes.c_int * n)(0,0,0)
-    taille = ctypes.c_int(n)
-    c_module.add_int_vecteur(v1, v2, res, taille)
-    print(res[1])
+    # n = 3
+    # v1 = (ctypes.c_int * n) (1, 3, 5)
+    # v2 = (ctypes.c_int * n) (3, 5, 6)
+    # res = (ctypes.c_int * n)(0,0,0)
+    # taille = ctypes.c_int(n)
+    # c_module.add_int_vecteur(v1, v2, res, taille)
+    # print(res[1])
 
-
+    #Avec un pointeur
+    c_module.fib.restype = ctypes.POINTER(ctypes.c_ulong)
+    a = 2
+    res = c_module.fib(ctypes.c_uint(a))
+    for r in res:
+        print(r)
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
