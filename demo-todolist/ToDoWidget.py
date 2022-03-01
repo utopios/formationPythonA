@@ -14,7 +14,9 @@ class ToDoWidget(QWidget):
         self.complete_button = QPushButton('valider')
         self.todos = []
         self.todo_model = ToDoModel(self.todos)
+        self.list_view.setModel(self.todo_model)
         self.createwidget()
+        self.connectslot()
 
 
     def createwidget(self):
@@ -26,4 +28,16 @@ class ToDoWidget(QWidget):
         self.v_layout_box.addWidget(self.edit_todo_text)
         self.v_layout_box.addWidget(self.add_button)
         self.setLayout(self.v_layout_box)
+
+    def connectslot(self):
+        self.add_button.clicked.connect(self.add)
+
+
+    def add(self):
+        content = self.edit_todo_text.text()
+        if content:
+            todo = (False, content)
+            self.todo_model.todos.append(todo)
+            self.todo_model.layoutChanged.emit()
+            self.edit_todo_text.setText("")
 
