@@ -18,6 +18,16 @@ void add_int_vecteur(int *a, int *b, int *c, int taille) {
         c[i] = a[i] + b[i];
     }
 }
+int write_in_file(char* todo) {
+    FILE *file_pointer = fopen("data.txt", "w");
+    if(file_pointer != NULL)
+    {
+        fputs(todo, file_pointer);
+        fclose(file_pointer);
+        return 1;
+    }
+    return 0;
+}
 unsigned long * fib(unsigned n)
 {
     unsigned long * fib_arr = (unsigned long *) malloc(n * sizeof(unsigned long));
@@ -36,7 +46,7 @@ unsigned long * fib(unsigned n)
 }
 
 void freeme(unsigned long * ptr) {
-    free(ptr);e
+    free(ptr);
 }
 
 int main() {
