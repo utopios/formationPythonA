@@ -19,7 +19,7 @@ void add_int_vecteur(int *a, int *b, int *c, int taille) {
     }
 }
 int write_in_file(char* todo) {
-    FILE *file_pointer = fopen("data.txt", "w");
+    FILE *file_pointer = fopen("data.txt", "a");
     if(file_pointer != NULL)
     {
         fputs(todo, file_pointer);
